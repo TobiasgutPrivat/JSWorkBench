@@ -27,21 +27,21 @@ class ParentObject {
 // Creating the Proxy for automatic data management
 function createDynamicProxy(obj) {
     return new Proxy(obj, {
-        async get(target, prop) {
+        get(target, prop) {
             if (!target._loaded) {
                 console.log(`Loading ${prop}...`);
-                await loadData(target); // Simulate data loading from DB
+                loadData(target); // Wait for data to load from DB
             }
             return target[prop];
         },
-        async set(target, prop, value) {
+        set(target, prop, value) {
             // Save the object to the "database" before updating
             console.log(`Saving ${prop}...`);
-            await database.save(target.constructor.name, target);
+            database.save(target.constructor.name, target);
             
             // After saving, unload the data (reset it)
-            target[prop] = value;
             unloadData(target);  // Simulate unloading the object (reset its state)
+            target[prop] = value;
             return true;
         }
     });
