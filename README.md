@@ -6,6 +6,19 @@ DB: NoSQL + Vektor, serialisierung als json/dict-array-format, kein weiteres Bac
 
 Auto UI für normale objekte
 
+### serialisierung
+
+difficulties: 
+- deserializing objects in a way where i get correct prototypes again
+- some types cannot be stored, like anonymous functions / module references etc.
+
+Option 1:
+    spezifisches handling von serialisierung und deserialisierung, hierarchische struktur zu Objekt-tabelle (id,class,serialized data) -> serialized data hat keine subobjekte mehr (nur primitive werte) 
+    - getting objects needs a lot of steps for nested objects (optimization or server side construction needed)
+
+Option 2:
+    use something like C# where it can fully be deserialized by class definitions
+
 ### speicherung
 
 lazy loading nur für nodes (nicht im objekt gehandelt)
