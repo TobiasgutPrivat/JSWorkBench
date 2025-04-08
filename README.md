@@ -18,6 +18,10 @@ Option 1:
 
 Option 2:
     use something like C# where it can fully be deserialized by class definitions
+    somthing like blazzor webserver -> also allows solving server/client side processing
+    C# has better reflection -> better way to store types serialized
+    - could use hierarchical structure with documents (just general objects) 
+    - mabe with path like (attributes -> name, lists -> index) allows appending data at any point
 
 ### speicherung
 
